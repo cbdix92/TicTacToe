@@ -7,22 +7,21 @@ namespace Common
     class SpeedController
     {
         private Stopwatch timer;
-        private int updateCounter = 0;
+        private int actualLoopsPerSecond = 0;
         private int pauseForMilliseconds = 100;
 
         public SpeedController()
         {
             timer = new Stopwatch();
             timer.Start();
-
         }
 
-        public void Wait(int refreshPerSecond)
+        public void Wait(int targetLoopsPerSecond)
         {
             // increment update counter
-            updateCounter++;
+            actualLoopsPerSecond++;
 
-            // Pause the loop 
+            // Pause the loop
             Thread.Sleep(pauseForMilliseconds);
 
             // Check if one second has passed
@@ -33,7 +32,7 @@ namespace Common
                 timer.Start();
 
                 // Adjust refresh rate
-                if (updateCounter > refreshPerSecond)
+                if (actualLoopsPerSecond > targetLoopsPerSecond)
                 {
                     pauseForMilliseconds += 1;
                 }
@@ -41,7 +40,7 @@ namespace Common
                 {
                     pauseForMilliseconds -= 1;
                 }
-                updateCounter = 0;
+                actualLoopsPerSecond = 0;
             }
         }
     }
