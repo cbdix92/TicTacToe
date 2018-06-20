@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Common
 {
-    public enum State { None, X, Y, Cursor };
+    public enum State { None, X, Y };
 
     public class Board
     {
@@ -13,10 +13,10 @@ namespace Common
         public State playerTurn { get; set; } = State.X;
 
         // TicTacToe Board full of empty space
-        public State[,] board = new State[3, 3];
+        public Sprite[,] board = new Sprite[3, 3];
 
 
-        public char GetState(Position position)
+        public char GetStateChar(Position position)
         {
             // Return char element of specified board position
             if (board[position.Row, position.Col] == State.X) return 'X';
@@ -41,14 +41,53 @@ namespace Common
     public class Player
     {
 
+      public int Score{ get; set; }
+
+    }
+
+    public class Sprite
+    {
+      State state = State.None;
+
+      // Display the Cursor instead of the Sprite State when "True".
+      private bool cursorDisplayFlag = false;
+      private State cursor = State.Cursor;
+
+      public bool SetState(State newState)
+      {
+        // Check if Sprite state has already been set, if not, set it.
+        if (state != State.None)
+        {
+          state = newState;
+          return true;
+        }
+        // Sprite has already been assigned a State
+        else { return false; }
+      }
+
+      public State GetState()
+      {
+        if (cursorDisplayFlag)
+        {
+          return cursor;
+        }
+        else {return state;}
+      }
+
+      public void ToggleCursorDisplayFlag()
+      {
+        if (cursorDisplayFlag == true) { cursorDisplayFlag = false }
+        else { cursorDisplayFlag = true; }
+      }
     }
 
     public class WinLose
     {
-        public bool Check(Board board)
-        {
-            return true;
-        }
+      public bool Check(Board board)
+    {
+      // Check if a player has won the game
+      return true
+    }
     }
 
     public class Position

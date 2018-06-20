@@ -4,7 +4,7 @@ namespace Common
 {
     static class RenderEngine
     {
-        public static char[] Buffer;
+        public static char[,] Buffer;
 
         public static void Draw()
         {
@@ -16,7 +16,7 @@ namespace Common
 
         public static void SetBufferSize(int newBufferSize)
         {
-            Buffer = new char[newBufferSize];
+            Buffer = new char[newBufferSize, newBufferSize];
         }
 
         public static void RasterizeBuffer(char[] BufferFill)
