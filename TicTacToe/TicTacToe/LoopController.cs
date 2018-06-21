@@ -10,7 +10,7 @@ namespace Common
         private int actualLoopsPerSecond = 0;
         private int pauseForMilliseconds = 100;
 
-        public SpeedController()
+        public LoopController()
         {
             timer = new Stopwatch();
             timer.Start();

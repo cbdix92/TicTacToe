@@ -13,7 +13,7 @@ namespace TicTacToe
             Player playerOne = new Player();
             Player playerTwo = new Player();
             WinLose winlose = new WinLose();
-            LoopController LoopController = new LoopController();
+            LoopController loopController = new LoopController();
             KeyHandler keyHandler = new KeyHandler();
 
             while (winlose.Check(board))
@@ -22,7 +22,7 @@ namespace TicTacToe
                 Console.Clear();
 
                 // Render the screen
-                RenderEngine.FillScreen();
+                //RenderEngine.FillScreen();
                 RenderEngine.Draw();
 
                 // Get player Input
@@ -31,7 +31,7 @@ namespace TicTacToe
 
 
                 // Slow GameLoop
-                speedController.Wait(10);
+                loopController.Wait(10);
             }
         }
     }

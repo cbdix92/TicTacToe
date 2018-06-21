@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Common
 {
-    public enum State { None, X, Y };
+    public enum State { None, X, Y , Cursor};
 
     public class Board
     {
@@ -21,7 +21,7 @@ namespace Common
             // Return char element of specified board position
             if (board[position.Row, position.Col].GetState() == State.X) return 'X';
             if (board[position.Row, position.Col].GetState() == State.Y) return 'Y';
-            if (board[position.Row, Positiom.Col].GetSate() == Satte.Cursor) return '#';
+            if (board[position.Row, position.Col].GetState() == State.Cursor) return '#';
             else return ' ';
         }
 
@@ -30,7 +30,7 @@ namespace Common
             if (state == State.None) { return false; }
             else if (state != State.None)
             {
-                board[position.Row, position.Col] = state;
+                board[position.Row, position.Col].SetState(state);
                 return true;
             }
             return false;
@@ -77,7 +77,7 @@ namespace Common
 
       public void ToggleCursorDisplayFlag()
       {
-        if (cursorDisplayFlag == true) { cursorDisplayFlag = false }
+        if (cursorDisplayFlag == true) { cursorDisplayFlag = false; }
         else { cursorDisplayFlag = true; }
       }
     }
@@ -86,8 +86,8 @@ namespace Common
     {
       public bool Check(Board board)
     {
-      // Check if a player has won the game
-      return true
+            // Check if a player has won the game
+            return true;
     }
     }
 

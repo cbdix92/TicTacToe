@@ -13,12 +13,12 @@ namespace Common
         {
           // Check if screen size was ever set. If not, use default size
           if (screen == null)
-          { this.SetScreenSize(defaultScreeSize); }
+          { SetScreenSize(defaultScreeSize); }
           for (int Row = 0; Row < screen.Length; Row++)
           {
-            for (int Col = 0; Col < screen[Row].Length; Col++)
+            for (int Col = 0; Col < screen.GetLength(0); Col++)
             {
-              Console.Write(Screen[Row][Col]);
+              Console.Write(screen[Row, Col]);
             }
             Console.WriteLine();
           }
@@ -34,15 +34,15 @@ namespace Common
 
         public static void FillScreen([]char[,] BufferFill)
         {
-          if (screen == null) { this.SetScreenSize(defaultScreeSize); }
+          if (screen == null) { SetScreenSize(defaultScreeSize); }
 
           foreach (char[,] arrayItem in BufferFill)
           {
             for (int Row = 0; Row < arrayItem.Length; Row++)
             {
-              for (int Col = 0; Col < arrayItem[Row].Length; Col++)
+              for (int Col = 0; Col < arrayItem.GetLength(0); Col++)
               {
-                screen[Row][Col] = arrayItem[Row][Col];
+                screen[Row, Col] = arrayItem[Row, Col];
               }
             }
           }
