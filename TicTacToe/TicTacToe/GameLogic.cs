@@ -19,8 +19,9 @@ namespace Common
         public char GetStateChar(Position position)
         {
             // Return char element of specified board position
-            if (board[position.Row, position.Col] == State.X) return 'X';
-            if (board[position.Row, position.Col] == State.Y) return 'Y';
+            if (board[position.Row, position.Col].GetState() == State.X) return 'X';
+            if (board[position.Row, position.Col].GetState() == State.Y) return 'Y';
+            if (board[position.Row, Positiom.Col].GetSate() == Satte.Cursor) return '#';
             else return ' ';
         }
 

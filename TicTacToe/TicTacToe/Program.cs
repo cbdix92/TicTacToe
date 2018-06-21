@@ -7,13 +7,13 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            RenderEngine.SetBufferSize(20);
+            RenderEngine.SetScreenSize(20);
 
             Board board = new Board();
             Player playerOne = new Player();
             Player playerTwo = new Player();
             WinLose winlose = new WinLose();
-            SpeedController speedController = new SpeedController();
+            LoopController LoopController = new LoopController();
             KeyHandler keyHandler = new KeyHandler();
 
             while (winlose.Check(board))
@@ -22,6 +22,7 @@ namespace TicTacToe
                 Console.Clear();
 
                 // Render the screen
+                RenderEngine.FillScreen();
                 RenderEngine.Draw();
 
                 // Get player Input

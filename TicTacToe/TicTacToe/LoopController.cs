@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Common
 {
-    class SpeedController
+    class LoopController
     {
         private Stopwatch timer;
         private int actualLoopsPerSecond = 0;
